@@ -1,30 +1,6 @@
-class ArticlesResult {
-  ArticlesResult({
-    required this.status,
-    required this.totalResults,
-    required this.articles,
-  });
-
-  String status;
-  int totalResults;
-  List<Article> articles;
-
-  factory ArticlesResult.fromJson(Map<String, dynamic> json) => ArticlesResult(
-        status: json["status"],
-        totalResults: json["totalResults"],
-        articles: List<Article>.from((json["articles"] as List)
-            .map((e) => Article.fromJson(e))
-            .where((article) =>
-                article.author != null &&
-                article.urlToImage != null &&
-                article.description != null &&
-                article.content != null)),
-      );
-}
-
-class Article {
-  Article({
-    required this.author,
+class Module5Model1 {
+  Module5Model1({
+    this.author,
     required this.title,
     this.description,
     required this.url,
@@ -33,15 +9,15 @@ class Article {
     this.content,
   });
 
-  String author;
+  String? author;
   String title;
-  dynamic description;
+  String? description;
   String url;
-  dynamic urlToImage;
+  String? urlToImage;
   DateTime publishedAt;
-  dynamic content;
+  String? content;
 
-  factory Article.fromJson(Map<String, dynamic> json) => Article(
+  factory Module5Model1.fromJson(Map<String, dynamic> json) => Module5Model1(
         author: json["author"],
         title: json["title"],
         description: json["description"],
@@ -50,4 +26,14 @@ class Article {
         publishedAt: DateTime.parse(json["publishedAt"]),
         content: json["content"],
       );
+
+  Map<String, dynamic> toJson() => {
+        "author": author,
+        "title": title,
+        "description": description,
+        "url": url,
+        "urlToImage": urlToImage,
+        "publishedAt": publishedAt.toIso8601String(),
+        "content": content,
+      };
 }
