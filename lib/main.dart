@@ -42,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             ElevatedButton(
-              child: const Text('Minggu 3'),
+              child: const Text('Minggu 5'),
               onPressed: () {
                 Navigator.push(
                   context,
