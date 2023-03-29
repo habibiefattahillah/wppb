@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:wppb/week5/percobaan/data/model/article.dart';
-import 'package:wppb/week5/percobaan/data/ui/web_view.dart';
+import 'package:wppb/week5/percobaan/ui/web_view.dart';
 
 class ArticleDetailPage extends StatelessWidget {
   static const routeName = '/article_detail';

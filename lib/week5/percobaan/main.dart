@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:wppb/week5/percobaan/data/model/article.dart';
-import 'package:wppb/week5/percobaan/data/ui/detail_page.dart';
-import 'package:wppb/week5/percobaan/data/ui/list_page.dart';
-import 'package:wppb/week5/percobaan/data/ui/web_view.dart';
+import 'package:wppb/week5/percobaan/ui/detail_page.dart';
+import 'package:wppb/week5/percobaan/ui/list_page.dart';
+import 'package:wppb/week5/percobaan/ui/web_view.dart';
 
 class Percobaan extends StatelessWidget {
   const Percobaan({Key? key}) : super(key: key);

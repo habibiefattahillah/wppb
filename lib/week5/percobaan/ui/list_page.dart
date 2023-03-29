@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:wppb/week5/percobaan/data/model/article.dart';
-import 'package:wppb/week5/percobaan/data/ui/detail_page.dart';
+import 'package:wppb/week5/percobaan/ui/detail_page.dart';
+import 'package:wppb/week5/percobaan/data/api/api_service.dart';
 
 class NewsListPage extends StatelessWidget {
   static const routeName = '/article_list';
+  final ApiService _apiService = ApiService();
 
   @override
   Widget build(BuildContext context) {
@@ -13,16 +15,21 @@ class NewsListPage extends StatelessWidget {
           title: Text('News App'),
         ),
         body: FutureBuilder(
-          future:
-              DefaultAssetBundle.of(context).loadString('assets/articles.json'),
-          builder: (context, snapshot) {
-            final List<Article> articles = parseArticles(snapshot.data);
-            return ListView.builder(
-              itemCount: articles.length,
-              itemBuilder: (context, index) {
-                return _buildArticleItem(context, articles[index]);
-              },
-            );
+          future: _apiService.getArticles(),
+          builder: (context, AsyncSnapshot<List<Article>> snapshot) {
+            if (snapshot.hasData) {
+              List<Article> articles = snapshot.data!;
+              return ListView.builder(
+                itemCount: articles.length,
+                itemBuilder: (context, index) {
+                  return _buildArticleItem(context, articles[index]);
+                },
+              );
+            } else if (snapshot.hasError) {
+              return Center(child: Text('Failed to load articles'));
+            } else {
+              return Center(child: CircularProgressIndicator());
+            }
           },
         ));
   }
