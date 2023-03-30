@@ -11,7 +11,8 @@ class ApiService {
 
   Future<List<Article>> getArticles() async {
     final url = Uri.parse(
-        '$_baseUrl/top-headlines?country=$_country&category=$_category&apiKey=$_apiKey');
+        // 'https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=a441d239d9c1498497b7393e41d4db38',
+        '$_baseUrl/top-headlines?country=us&category=$_category&apiKey=$_apiKey');
     final response = await get(url);
     if (response.statusCode == 200) {
       final result = jsonDecode(response.body);
